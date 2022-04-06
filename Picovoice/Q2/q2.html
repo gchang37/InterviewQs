@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ratings Widget</title>
+	<link rel="stylesheet" type="text/css" href="./q2.css">
+	<script src="https://kit.fontawesome.com/3e1824b6d1.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$(function(){
+			/* 1. Visualizing things on Hover - See next part for action on click */
+			  $('#stars li').on('mouseover', function(){
+			    var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+			   
+			    // Now highlight all the stars that's not after the current hovered star
+			    $(this).parent().children('li.star').each(function(e){
+			      if (e < onStar) {
+			        $(this).addClass('hover');
+			      }
+			      else {
+			        $(this).removeClass('hover');
+			      }
+			    });
+			    
+			  }).on('mouseout', function(){
+			    $(this).parent().children('li.star').each(function(e){
+			      $(this).removeClass('hover');
+			    });
+			  });
+			/* 2. Action to perform on click */
+			  $('#stars li').on('click', function(){
+			    var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+			    var stars = $(this).parent().children('li.star');
+			    
+			    for (i = 0; i < stars.length; i++) {
+			      $(stars[i]).removeClass('selected');
+			    }
+			    
+			    for (i = 0; i < onStar; i++) {
+			      $(stars[i]).addClass('selected');
+			    }
+			    alert("Thank you for your feedback for  "+ onStar + " star(s) rating. Please share your thoughts via email because this page is not hooked up to any servicing backend")
+			    
+			  });
+
+		});
+	</script>
+</head>
+<body>
+	<h1>Please rate my work:</h1>
+	<div class="rating-stars">
+		<ul id="stars">
+			<li class="star" title= "Poor", data-value="1"><i class= "fa fa-star fa-fw"></i></li>
+			<li class="star" title= "Fair", data-value="2"><i class= "fa fa-star fa-fw"></i></li>
+			<li class="star" title= "Good", data-value="3"><i class= "fa fa-star fa-fw"></i></li>
+			<li class="star" title= "Excellent", data-value="4"><i class= "fa fa-star fa-fw"></i></li>
+			<li class="star" title= "Wow!", data-value="5"><i class= "fa fa-star fa-fw"></i></li>
+		</ul>
+	</div>
+</body>
+</html>

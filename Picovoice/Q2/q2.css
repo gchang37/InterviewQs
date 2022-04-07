@@ -18,6 +18,9 @@ body{
 		background-position: 412px;
 	}
 }
+h1{
+	color: #2C5182;
+}
 
 /* Rating Star Widgets Style */
 .rating-stars ul{
@@ -50,15 +53,18 @@ img{
 	height: 600px;
 	width: auto;
 }
+.slides{
+	display: none;
+}
+.image-slider{
+	display: block;
+	max-width: 1200px;
+	/* position: relative; */
+}
 .direction button{
 	font-size: 2.5em;
 	margin: 5px;
-	background-color: blue;
+	background-color: cornflowerblue;
 	color: white;
 	border:none;
-}
-.image-slider{
-	display: flex;
-	width: 200vw;
-	position: relative;
 }

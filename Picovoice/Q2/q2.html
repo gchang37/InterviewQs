@@ -6,8 +6,15 @@
 	<title>Ratings Widget</title>
 	<link rel="stylesheet" type="text/css" href="./q2.css">
 	<script src="https://kit.fontawesome.com/3e1824b6d1.js" crossorigin="anonymous"></script>
+	<!--<link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+      crossorigin="anonymous"
+    />-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script>
+	<script src="q2.js"></script>
+	<!-- <script>
 		$(function(){
 			/* 1. Visualizing things on Hover - See next part for action on click */
 			  $('#stars li').on('mouseover', function(){
@@ -44,8 +51,10 @@
 			    
 			  });
 
+			  /*image slider*/
+
 		});
-	</script>
+	</script> -->
 </head>
 <body>
 	<h1>Please rate my work:</h1>
@@ -57,6 +66,16 @@
 			<li class="star" title= "Excellent", data-value="4"><i class= "fa fa-star fa-fw"></i></li>
 			<li class="star" title= "Wow!", data-value="5"><i class= "fa fa-star fa-fw"></i></li>
 		</ul>
+	</div>
+	<div class="image-slider">
+		<img class="slides" src="images/french-bulldog-summer-smile-joy-160846.jpeg">
+		<img class="slides" src="images/pexels-photo-38008.jpeg" alt="">
+		<img class="slides" src="images/pexels-photo-460823.jpeg" alt="">
+		<img class="slides" src="images/pexels-photo-551628.jpeg" alt="">
+	</div>
+	<div class="direction">
+		<button><i class="fa-solid fa-angle-left"></i></button>
+		<button><i class="fa-solid fa-angle-right"></i></button>
 	</div>
 </body>
 </html>

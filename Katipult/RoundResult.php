@@ -1,6 +1,5 @@
 <?php
 
-
 class RoundResult
 {
     /**
@@ -19,3 +18,4 @@ class RoundResult
         $this->carsPosition = $carsPosition;
     }
 }
+?>

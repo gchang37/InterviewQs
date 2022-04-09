@@ -6,3 +6,4 @@ include('Race.php');
  $test = new Race;
  $results = $test->runRace();
  print_r($results->getRoundResults());
+?>

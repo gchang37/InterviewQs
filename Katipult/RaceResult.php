@@ -12,3 +12,4 @@ class RaceResult
         return $this->roundResults;
     }
 }
+?>

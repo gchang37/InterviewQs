@@ -13,8 +13,8 @@
 
 class Track{
 
-    private $routeLength = 200;
-    private $routeSectionLen = 40;
+    private $routeLength = 20;
+    private $routeSectionLen = 2;
     public $route = [];
     public $test;
 
@@ -30,8 +30,15 @@ class Track{
         for($i = 0; $i < $size; $i++){
             /*  0 = curve
                 1 = straight */
-            $route[$i] = rand(0,1);
-            echo "Route section [". $i."] has ".$route[$i]. "\n";
+            $routeType = rand(0,1);
+            $routeTypeStart = $i * $this->routeSectionLen;
+            $this->route = array_merge($this->route, array_fill(0, $this->routeSectionLen, $routeType));
+            echo "Route section [". $i."] has ".$routeType."\n";
+            // echo "Route section start: ".$routeTypeStart."\n";
+        }
+
+        for($i = 0; $i < $this->routeLength; $i++){
+            echo $i.": ".$this->route[$i]."\t";
         }
     }
 }

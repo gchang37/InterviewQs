@@ -18,4 +18,5 @@ class RoundResult
         $this->carsPosition = $carsPosition;
     }
 }
+
 ?>

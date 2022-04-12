@@ -16,6 +16,7 @@ class RoundResult
     {
         $this->step = $step;
         $this->carsPosition = $carsPosition;
+        var_dump($carsPosition);
     }
 }
 

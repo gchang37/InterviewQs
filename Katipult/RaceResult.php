@@ -7,12 +7,6 @@ class RaceResult
      */
     private $roundResults = [];
 
-    /** @var status of race*/
-    private $raceStatus;
-
-    /** @var arry of winning car*/
-    private $winners = [];
-
     /**
      * @parameter racetrack = a list of track elements
      * @parameter routelenth = total amount of track elements
@@ -22,33 +16,30 @@ class RaceResult
      */
     public function __construct(&$raceTrack, &$routeLength, &$routeSectionLen, &$totalCarRacing, &$carList){
         echo"constructing race results\n";
-        foreach($carList as $car){
-            $race_performance = [];
-            $min_step=0;
-            $car_pos=0;
-            $curRouteSection=$raceTrack[$min_step];
-            while($car_pos < $routeLength){
+        $min_step=0;
+        $max_car_pos = 0;
+        $round_performance = array_fill(0, $totalCarRacing, 0);
+        var_dump($round_performance);
+        echo "Printing track\n";
+        print_r($raceTrack);
 
-            }
-            $roundResults = array_merge($roundResults, $race_performance);
-        }
-    }
+        echo "car list [0]: ".$carList[0]."\n";
+        echo "round performance [0]: ".$round_performance[0]."\n";
+        echo "same line in compression: ".$round_performance[$carList[0]];
 
-    public function getRoundResults(): array
-    {
-        return $this->roundResults;
-    }
+        $raceSection = $raceTrack[$round_performance[$carList[0]]];
+                echo "Race Section: ".$raceSection."\n";
 
-    public function getWinner(){
-        if($raceStatus == 0){
-            echo "This race has a clear winner\n";
-        } else {
-            echo "This race ended with a draw\n";
-        }
-        echo "Winner(s) of the race:";
-        foreach($this->winners as $winner){
-            echo $this->winner. " ";
-        }
+        // while($max_car_pos < $routeLength){
+        //     $copy = $round_performance->getArrayCopy();
+        //     $this->roundResults[] = new RoundResult($min_step, $copy);
+        //     for($i = 0; $i < $totalCarRacing; $i++){
+        //         // get race section based on car performance in previous round
+        //         $raceSection = $raceTrack[$round_performance[$carList[$i]]];
+        //         echo "Race Section: ".$raceSection."\n"
+        //     }
+
+        // }
     }
 }
 ?> 

@@ -3,7 +3,7 @@
 class RoundResult
 {
     /**
-     * @var int
+     * @var int == round number
      */
     public $step;
 

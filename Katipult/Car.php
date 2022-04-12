@@ -2,18 +2,20 @@
 
 class Car {
     private $totalSpeed = 22;
-    private $straight_speed;
-    private $curve_speed;
+    private $carSpeeds;
     public $car_id;
 
     public function __construct($id){
         $this->car_id = $id;
-        $this->straight_speed = rand(4,18);
-        $this->curve_speed = $this->totalSpeed - $this->straight_speed;
-        echo "Car ".$this->car_id." has straight speed: ".$this->straight_speed." and curve speed: ".$this->curve_speed."\n";
+        $this->carSpeeds = new SplFixedArray(2);
+        $straight_speed = rand(4,18);
+        $this->carSpeeds[0] = $this->totalSpeed - $straight_speed;
+        $this->carSpeeds[1] = $straight_speed;
+        echo "Car ".$this->car_id." has straight speed: ".$straight_speed."\n";
+        echo "Car ".$this->car_id." has curve speed: ".$this->carSpeeds[0]."\n";
+        echo "Car ".$this->car_id." has straight speed stored: ".$this->carSpeeds[1]."\n";
+        //var_dump($this->carSpeeds);
     }
 }
-// for($i = 0; $i < 5; $i++){
-//     $car = new Car($i);
-// }
+//$car = new Car(1)
 ?>

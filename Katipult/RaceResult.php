@@ -21,11 +21,6 @@ class RaceResult extends RoundResult
         $max_car_pos = 0;
         $round_performance = array_fill(0, $totalCarRacing, 0);
 
-        // echo "Printing track\n";
-        // print_r($raceTrack);
-        // echo "Printing cars\n";
-        // print_r($carList);
-
         $raceFinished = false;
         $speed2use;
         $speedUsed = [];
@@ -33,24 +28,21 @@ class RaceResult extends RoundResult
         $prev_raceSection = new SplFixedArray($totalCarRacing);
         while(!$raceFinished){
             $copy = $round_performance;
-            //echo $min_step." round performance: ";
-            //var_dump($copy);
             $this->roundResults[] = new RoundResult($min_step, $copy);
             for($i = 0; $i < $totalCarRacing; $i++){
                 // get race section based on car performance in previous round
                 $raceSection[$i] = $raceTrack[$round_performance[$i]];
-                //echo "Car ".$i." in race Section: ".$raceSection[$i]."\n";
+    
                 if($raceSection[$i] == 0){
                     $speed2use = $carList[$i][0];
                 } else {
                     $speed2use = $carList[$i][1];
                 }
                 
-                //echo " Speed to use for car ".$i." is ".$speed2use."\n";
                 $round_performance[$i] += $speed2use;
             }
             $max_car_pos = max($round_performance);
-            //echo "Max distance in round ".$max_car_pos."\n";
+            
             if($max_car_pos >= $routeLength){
                 $raceFinished = true;
             }
@@ -63,14 +55,20 @@ class RaceResult extends RoundResult
         return $this->roundResults;
     }
 
-    // public function getWinner(){
-    //     $lastRound = end($this->roundResults);
-    //     var_dump($lastRound);
-    //     //$lastRoundCarpos = $lastRound->carPosition;
-    //     $max_dist = max($lastRound->carPosition);
-    //     var_dump($max_dist);
-    //     $winner = array_filter($lastRound->carPosition, function($dist) use ($max_dist){return $dist == $max_dist;});
-    //     var_dump($winner);
-    // }
+    public function getWinner(){
+       $lastRoundCarPos = get_object_vars(end(array_values($this->roundResults)))['carsPosition'];
+       
+       $max_dist = max($lastRoundCarPos);
+       
+       $winner = array_keys(array_filter($lastRoundCarPos, function($dist) use ($max_dist){return $dist == $max_dist;}));
+
+       if(count($winner) == 1){
+           echo "The race has a clear winner:\n";
+       } else {
+            echo "The race ended in a draw and the winners:\n";
+       }       
+       print_r($winner);
+    
+    }
 }
 ?> 

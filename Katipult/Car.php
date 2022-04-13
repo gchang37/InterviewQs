@@ -12,5 +12,5 @@ trait Car {
         return $carList;
     }
 }
-//$car = new Car(1)
+
 ?>
